@@ -181,7 +181,7 @@ def handle(msg) :
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id, str(datetime.datetime.now()))
             os.system("raspistill -o image.jpg")
-            #os.system("fswebcam image.jpg")
+            #os.system("fswebcam image.jpg")		for webcam
             time.sleep(5)
             bot.sendPhoto(chat_id, ('image.jpg', open('image.jpg', 'rb')), caption=str(datetime.datetime.now()))
     elif command == 'Video':
