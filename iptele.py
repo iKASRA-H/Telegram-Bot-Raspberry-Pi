@@ -92,49 +92,49 @@ def handle(msg) :
     if command == '/test':
 	if chat_id==438378601 or chat_id==384010640:
            if response == 0:
-              bot.sendMessage(chat_id, 'اینترنت متصل می باشد')
+              bot.sendMessage(chat_id, 'I am connected to the Internet!')
 
                #led
     elif command=='/1on':
        	if chat_id==438378601 or chat_id==384010640:
        	    GPIO.output(led1,GPIO.HIGH)
-            bot.sendMessage(chat_id,'چراغ ۱ روشن شد')
+            bot.sendMessage(chat_id,'LED 1 is on!')
     elif command=='/1off':
        	if chat_id==438378601 or chat_id==384010640:
        	    GPIO.output(led1,GPIO.LOW)
-     	    bot.sendMessage(chat_id,'چراغ ۱ خاموش شد')
+     	    bot.sendMessage(chat_id,'LED 1 is off!')
     elif command=='/2on':
        	if chat_id==438378601 or chat_id==384010640:
        	    GPIO.output(led2,GPIO.HIGH)
-       	    bot.sendMessage(chat_id,'چراغ ۲ روشن شد')
+       	    bot.sendMessage(chat_id,'LED 2 is on!')
     elif command=='/2off':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led2,GPIO.LOW)
-            bot.sendMessage(chat_id,'چراغ ۲ خاموش شد')
+            bot.sendMessage(chat_id,'LED 2 is off!')
     elif command=='/3on':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led3,GPIO.HIGH)
-            bot.sendMessage(chat_id,'چراغ ۳ روشن شد')
+            bot.sendMessage(chat_id,'LED 3 is on!')
     elif command=='/3off':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led3,GPIO.LOW)
-            bot.sendMessage(chat_id,'چراغ ۳ خاموش شد')
+            bot.sendMessage(chat_id,'LED 3 is off!')
     elif command=='/4on':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led4,GPIO.HIGH)
-            bot.sendMessage(chat_id,'چراغ ۴ روشن شد')
+            bot.sendMessage(chat_id,'LED 4 is on!')
     elif command=='/4off':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led4,GPIO.LOW)
-            bot.sendMessage(chat_id,'چراغ ۴ خاموش شد')
+            bot.sendMessage(chat_id,'LED 4 is off!')
     elif command=='/5on':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led5,GPIO.HIGH)
-            bot.sendMessage(chat_id,'چراغ ۵ روشن شد')
+            bot.sendMessage(chat_id,'LED 5 is on!')
     elif command=='/5off':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led5,GPIO.LOW)
-            bot.sendMessage(chat_id,'چراغ ۵ خاموش شد')
+            bot.sendMessage(chat_id,'LED 5 is off!')
     elif command=='/alloff':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led1,GPIO.LOW)
@@ -142,7 +142,7 @@ def handle(msg) :
             GPIO.output(led3,GPIO.LOW)
             GPIO.output(led4,GPIO.LOW)
             GPIO.output(led5,GPIO.LOW)
-            bot.sendMessage(chat_id,'قربان تمام چراغ ها خاموش شدند')
+            bot.sendMessage(chat_id,'Boss all the lights are off!')
     elif command=='/allon':
        	if chat_id==438378601 or chat_id==384010640:
             GPIO.output(led1,GPIO.HIGH)
@@ -150,7 +150,7 @@ def handle(msg) :
             GPIO.output(led3,GPIO.HIGH)
             GPIO.output(led4,GPIO.HIGH)
             GPIO.output(led5,GPIO.HIGH)
-            bot.sendMessage(chat_id,'قربان تمام چراغ ها روشن شدند')
+            bot.sendMessage(chat_id,'Boss all the lights are on!')
 
     elif command == '/ip':
          if chat_id==438378601 or chat_id==384010640:
@@ -163,14 +163,14 @@ def handle(msg) :
             bot.sendMessage(chat_id, chat_id)
     elif command == '/start':
         if chat_id==438378601 or chat_id==384010640:
-            bot.sendMessage(chat_id, 'سلام قربان من آماده اجرای دستورات هستم ')
+            bot.sendMessage(chat_id, 'Hi Boss I am ready for your commands')
     elif command == '/poweroff':
         if chat_id==438378601 or chat_id==384010640:
-            bot.sendMessage(chat_id,'روز خوش قربان!')
+            bot.sendMessage(chat_id,'Goodbye Boss!')
             os.system('sudo poweroff') 
     elif command == '/restart':
         if chat_id==438378601 or chat_id==384010640:
-            bot.sendMessage(chat_id,'من نیاز به تنظیم مجدد دارم چند ثانیه دیگر در خدمتتان خواهم بود!')
+            bot.sendMessage(chat_id,'I am rebooting myself Boss!')
             os.system('sudo reboot')
     elif command == '/time':
         if chat_id==438378601 or chat_id==384010640:
