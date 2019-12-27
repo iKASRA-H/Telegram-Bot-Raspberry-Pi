@@ -153,7 +153,7 @@ def handle(msg) :
             bot.sendMessage(chat_id,'Boss all the lights are on!')
 
     elif command == '/ip':
-         if chat_id==438378601 or chat_id==384010640:
+         if chat_id==438378601 or chat_id==384010640:	#you can use your chat id for more secure commands
             bot.sendMessage(chat_id, ipaddr)
     elif command == '/ipex':
         if chat_id==438378601 or chat_id==384010640:
@@ -199,7 +199,7 @@ def handle(msg) :
   #  if content_type == 'photo':
       #  bot.download_file(msg['photo'][-1]['file_id'], './file.png')
        # text_file.write(data)text_file.write(str(command)+'\n')
-bot = telepot.Bot('464602933:AAExeSBeA85zt9EVYxT9hj4aohmJaBWr31g')
+bot = telepot.Bot('enter your bot token')
 bot.message_loop(handle)
 #bot.sendMessage(42433085,'i m online sir')
 #file = open('k.txt', 'w')
