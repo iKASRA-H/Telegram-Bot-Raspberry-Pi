@@ -21,6 +21,8 @@ logging.basicConfig(filename='example.log',level=logging.DEBUG)
 logging.debug('This message should go to the log file')
 logging.info('So should this')
 logging.warning('And this, too')
+
+#Defining the LEDs or the lamps connected to the RPi's GPIO
 led1=5
 led2=6
 led3=12
@@ -32,21 +34,12 @@ GPIO.setup(led2,GPIO.OUT)
 GPIO.setup(led3,GPIO.OUT)
 GPIO.setup(led4,GPIO.OUT)
 GPIO.setup(led5,GPIO.OUT)
+
 #sensor = BMP085.BMP085()
 
 #import logging log_name = 'log_sends_notifications'
 #logging.basicConfig(filename=log_name,level=logging.DEBUG, format='%(asctime)s %(message)s')
-"""
-After **inserting token** in the source code, run it:
-```
-$ python2.7 diceyclock.py
-```
-[Here is a tutorial](http://www.instructables.com/id/Set-up-Telegram-Bot-on-Raspberry-Pi/)
-teaching you how to setup a bot on Raspberry Pi. This simple bot does nothing
-but accepts two commands:
-- `/roll` - reply with a random integer between 1 and 6, like rolling a dice.
-- `/time` - reply with the current time, like a clock.
-"""
+
 #def loop(msg):
 #    p=(sensor.read_temperature())
 #    while true:
@@ -89,12 +82,17 @@ def handle(msg) :
    # return self._api_request('getFile", _rectify(p))
     #    bot.sendMessage(42433085,'temp is going up')
 
+	
+	
+	#Testing if the bot is connected to the Internet
     if command == '/test':
-	if chat_id==438378601 or chat_id==384010640:
+	if chat_id==438378601 or chat_id==384010640: #You can put your own chat id instead of this number	#you can use your chat id for more secure commands
            if response == 0:
               bot.sendMessage(chat_id, 'I am connected to the Internet!')
 
-               #led
+	
+	
+               #Control your lamps or LEDs
     elif command=='/1on':
        	if chat_id==438378601 or chat_id==384010640:
        	    GPIO.output(led1,GPIO.HIGH)
@@ -152,44 +150,67 @@ def handle(msg) :
             GPIO.output(led5,GPIO.HIGH)
             bot.sendMessage(chat_id,'Boss all the lights are on!')
 
+		
+		
+		
+		
+		
+	#The Rpi gives you it's local ip
     elif command == '/ip':
          if chat_id==438378601 or chat_id==384010640:	#you can use your chat id for more secure commands
             bot.sendMessage(chat_id, ipaddr)
+	
+	#The Rpi gives you it's public ip
     elif command == '/ipex':
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id, extipaddr)
+	
+	#This command gives you your chat id
     elif command == '/status':
 	if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id, chat_id)
+	
+	#This is the first message that you would see when you start the bot
     elif command == '/start':
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id, 'Hi Boss I am ready for your commands')
+	
+	#This command turns off the Rpi
     elif command == '/poweroff':
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id,'Goodbye Boss!')
             os.system('sudo poweroff') 
+		
+	#This command Restarts the Rpi
     elif command == '/restart':
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id,'I am rebooting myself Boss!')
             os.system('sudo reboot')
+		
+	#This command gives you the datetime of your Rpi
     elif command == '/time':
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id, str(datetime.datetime.now()))
      #  if command == '/temp':
        #     bot.sendMessage(chat_id,temp)
+	
+	
+	#This command will take a picture and it will send it to you via Telegram Bot
     elif command == 'Pic':
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id, str(datetime.datetime.now()))
-            os.system("raspistill -o image.jpg")
-            #os.system("fswebcam image.jpg")		for webcam
+            os.system("raspistill -o image.jpg") #THIS COMMAND IS FOR RPI'S CAMERA
+            #os.system("fswebcam image.jpg")		THIS COMMAND IS FOR WEBCAM 
             time.sleep(5)
             bot.sendPhoto(chat_id, ('image.jpg', open('image.jpg', 'rb')), caption=str(datetime.datetime.now()))
+	
+	#This command will take a 10 seconds video and it will send it to you via Telegram Bot
     elif command == 'Video':
         if chat_id==438378601 or chat_id==384010640:
             bot.sendMessage(chat_id, str(datetime.datetime.now()))
             os.system("sudo rm video.h264")
             os.system("sudo rm video.mp4")
-            os.system("raspivid -o video.h264 -t 10000")
+            os.system("raspivid -o video.h264 -t 10000") #You can change the 10000 number to any number you want for the length of the video(the value is in milliseconds)
             time.sleep(5)
             os.system("MP4Box -add video.h264 video.mp4")
             time.sleep(5)
@@ -199,7 +220,7 @@ def handle(msg) :
   #  if content_type == 'photo':
       #  bot.download_file(msg['photo'][-1]['file_id'], './file.png')
        # text_file.write(data)text_file.write(str(command)+'\n')
-bot = telepot.Bot('enter your bot token')
+bot = telepot.Bot('#enter your bot token here')
 bot.message_loop(handle)
 #bot.sendMessage(42433085,'i m online sir')
 #file = open('k.txt', 'w')
